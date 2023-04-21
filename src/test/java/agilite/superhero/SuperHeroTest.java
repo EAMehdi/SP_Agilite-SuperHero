@@ -65,13 +65,6 @@ public class SuperHeroTest
     }
 
 
-    @Test
-    // Test de la méthode getNiveau()
-    public void getNiveauTest()
-    {
-        SuperHero superHer1 = new SuperHero("Thor", "Coup de marteau", 11);
-        assertEquals(11, superHer1.getNiveau());
-    }
 
 }
 

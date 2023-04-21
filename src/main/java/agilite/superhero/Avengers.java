@@ -16,7 +16,11 @@ public class Avengers implements SuperHeroTeam {
      */
     @Override
     public void addMember(SuperHero hero) {
-        this.members.add(hero);
+        if(members.contains(hero))
+            throw new IllegalArgumentException("Le super-héros " + hero.getNom() + " est déjà membre des Avengers.");
+        else {
+            this.members.add(hero);
+        }
     }
     
     /**
@@ -26,7 +30,10 @@ public class Avengers implements SuperHeroTeam {
      */
     @Override
     public void removeMember(SuperHero hero) {
-        this.members.remove(hero);
+        if(!members.contains(hero))
+            throw new IllegalArgumentException("Le super-héros " + hero.getNom() + " n'est pas membre des Avengers.");
+        else
+            this.members.remove(hero);
     }
     
     /**
@@ -47,9 +54,15 @@ public class Avengers implements SuperHeroTeam {
      * Affiche le niveau total de l'équipe des Avengers en additionnant les niveaux de tous les membres.
      */
     @Override
-    public void displayTeamLevel() {
+    public String displayTeamLevel() {
         int totalLevel = teamLevel();
-        System.out.println("Les Avengers ont un niveau total de " + totalLevel + ", équivalent à celui de " + totalLevel + " super-héros.");
+        return "Les Avengers ont un niveau total de " + totalLevel + ", équivalent à celui de " + totalLevel + " super-héros.";
     }
+
+    public List<SuperHero> getMembers() {
+        return members;
+    }
+
+
 }
 

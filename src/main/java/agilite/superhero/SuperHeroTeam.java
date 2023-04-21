@@ -14,7 +14,7 @@ public interface SuperHeroTeam {
      * @param hero le super-héros à ajouter à l'équipe
      */
     void addMember(SuperHero hero);
-    
+
     /**
      * Supprime un super-héros de l'équipe.
      *
@@ -25,7 +25,7 @@ public interface SuperHeroTeam {
     /**
      * Affiche le niveau total de l'équipe en additionnant les niveaux de tous les membres.
      */
-    void displayTeamLevel();
+    String displayTeamLevel();
     
     /**
      * Retourne le niveau total de l'équipe en additionnant les niveaux de tous les membres.

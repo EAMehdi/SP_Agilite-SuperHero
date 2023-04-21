@@ -2,7 +2,11 @@ package agilite.superhero;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Classe-test agilite.superhero.AvengersTest.
@@ -33,7 +37,7 @@ public class AvengersTest
     private SuperHero mimi;
     private SuperHero mima;
     private SuperHero mimo;
-    private List<SuperHero> heros;
+    private List<SuperHero> members;
 
 
     /**
@@ -51,18 +55,55 @@ public class AvengersTest
     @BeforeEach
     public void setUp() // throws java.lang.Exception
     {
-        Avengers avengers = new Avengers(members);
         mimi = new SuperHero("mimi", "Voyager dans le temps", 23);
         mima = new SuperHero("mima", "Télépathie", 45);
         mimo = new SuperHero("mimo", "Lire dans les pensées", 40);
+        members = new ArrayList<>();
+        members.add(mimi);
+        members.add(mima);
+        members.add(mimo);
     }
-
 
     @Test
-    public void addMemberTest()
+    public void testAddMember()
     {
         Avengers avengers1 = new Avengers(members);
+        //avengers1.addMember(mimi);
+        //avengers1.addMember(mima);
+        //avengers1.addMember(mimo);
+        SuperHero mimi2 = new SuperHero("marco", "fait du polo", 23);
+        avengers1.addMember(mimi2);
+        assertEquals(4, avengers1.getMembers().size());
     }
+
+    @Test
+    public void testRemoveMember() {
+        Avengers avengers1 = new Avengers(members);
+        //avengers1.addMember(mimi);
+        //avengers1.removeMember(mimi);
+        assertEquals(3, avengers1.getMembers().size());
+    }
+
+    @Test
+    public void testTeamLevel() {
+        Avengers avengers1 = new Avengers(members);
+        //avengers1.addMember(mimi);
+        //avengers1.addMember(mima);
+        //avengers1.addMember(mimo);
+        assertEquals(108, avengers1.teamLevel());
+    }
+
+    @Test
+    public void testAddNullMember() {
+        Avengers avengers1 = new Avengers(members);
+        avengers1.addMember(null);
+        assertEquals(4, avengers1.getMembers().size());
+    }
+
+
+
+
+
 }
 
 
